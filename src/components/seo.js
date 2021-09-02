@@ -19,13 +19,15 @@ function Seo({ description, lang, meta, title }) {
             title
             description
             author
+            keywords
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const keywords = site.siteMetadata.keywords
+  const metaDescription = site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
   return (
@@ -41,6 +43,10 @@ function Seo({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          name: 'keywords',
+          content: keywords
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -52,29 +58,13 @@ function Seo({ description, lang, meta, title }) {
           property: `og:type`,
           content: `website`,
         },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
       ].concat(meta)}
     />
   )
 }
 
 Seo.defaultProps = {
-  lang: `en`,
+  lang: `es`,
   meta: [],
   description: ``,
 }
