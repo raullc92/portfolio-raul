@@ -1,0 +1,10 @@
+:root {
+  --yellowjs: #f7c929;
+  --title1: #ffffff;
+  --secondary: #000000;
+  --font1: "Rubik";
+}
+
+.title {
+  font-family: "Rubik";
+}

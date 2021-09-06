@@ -4,7 +4,7 @@ module.exports = {
     description: `Web personal de Raul Lopez, desarrollador web de React, Javascript, HTML y CSS`,
     author: `Raul Lopez`,
     siteUrl: `https://raullopezcruz.com`,
-    keywords: `React, Javascript, Diseño web, programación`
+    keywords: `React, Javascript, Diseño web, programación`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,12 +33,27 @@ module.exports = {
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
-      rule: {
-        include: /assets/ // See below to configure properly
-      }
-    }
+        rule: {
+          include: /assets/, // See below to configure properly
+        },
+      },
     },
     `gatsby-plugin-gatsby-cloud`,
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/src/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          posts: require.resolve("./src/components/layout.js"),
+          default: require.resolve("./src/components/layoutmdx.js"),
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
